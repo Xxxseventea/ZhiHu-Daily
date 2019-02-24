@@ -33,7 +33,7 @@
 
  5.recyclview+cardview巩固
 
- >6.viewpager+tablayout+fragment巩固
+ 6.viewpager+tablayout+fragment巩固
  - **网络请求：**
 
  1.okhttpclient初次使用
