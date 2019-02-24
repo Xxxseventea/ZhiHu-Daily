@@ -21,35 +21,35 @@
 
 
 ## 三、知识点：
->>> - **布局：**
+- **布局：**
 
-> 1.DrawerLayout初次使用
+ >>> 1.DrawerLayout初次使用
 
-> 2.banner初次使用（借鉴了一下网络）
+ 2.banner初次使用（借鉴了一下网络）
 
-> 3.webview初次使用
+ 3.webview初次使用
 
-> 4.NavigationBar初次使用
+ 4.NavigationBar初次使用
 
-> 5.recyclview+cardview巩固
+ 5.recyclview+cardview巩固
 
-> 6.viewpager+tablayout+fragment巩固
-> - **网络请求：**
+ 6.viewpager+tablayout+fragment巩固
+ - **网络请求：**
 
-> 1.okhttpclient初次使用
+ 1.okhttpclient初次使用
 
-> 2.httpurlconne+json数据
-> - **其他：**
+ 2.httpurlconne+json数据
+ - **其他：**
 
-> 1.封装了时间工具类
+ 1.封装了时间工具类
 
-> 2.用了Glide加载图片
+ 2.用了Glide加载图片
 
-> 3.de.hdodenhof圆形图片
+ 3.de.hdodenhof圆形图片
 
-> 4.recyclviewadapter+viewpageradapter巩固
+ 4.recyclviewadapter+viewpageradapter巩固
 
-> 5.点赞动画功能（借鉴网络）
+ 5.点赞动画功能（借鉴网络）
 
 
 （Markdown语法算不算2333）
