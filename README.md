@@ -24,7 +24,7 @@
 
 ![](https://github.com/Xxxseventea/ZhiHu-Daily/blob/master/images/%E8%AF%A6%E7%BB%86%E5%86%85%E5%AE%B9.gif)
 
-![](https://github.com/Xxxseventea/ZhiHu-Daily/blob/master/images/%E7%82%B9%E8%B5%9E%E5%8A%9F%E8%83%BD.gif)
+![]（https://github.com/Xxxseventea/ZhiHu-Daily/blob/master/images/%E7%82%B9%E8%B5%9E%E5%8A%9F%E8%83%BD.gif）
 
 > - **3.查看评论：**
 
@@ -59,6 +59,8 @@
  4.recyclviewadapter+viewpageradapter巩固
 
  5.点赞动画功能（借鉴网络）
+ 
+ 6.recyclerview item的点击事件
 
 
 （Markdown语法算不算2333）
