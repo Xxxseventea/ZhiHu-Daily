@@ -17,6 +17,9 @@
 
 ![](https://github.com/Xxxseventea/ZhiHu-Daily/blob/master/images/%E4%B8%BB%E9%A1%B5%E9%9D%A2.gif)
 
+
+![](https://github.com/Xxxseventea/ZhiHu-Daily/blob/master/images/%E6%8A%BD%E5%B1%89.gif)
+
 > - **2.内容细节+点赞view：**
 
 > - **3.查看评论：**
