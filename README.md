@@ -28,6 +28,8 @@
 
 > - **3.查看评论：**
 
+![](https://github.com/Xxxseventea/ZhiHu-Daily/blob/master/images/%E8%AF%84%E8%AE%BA.gif)
+
 
 ## 三、知识点：
 - **布局：**
