@@ -12,8 +12,25 @@
 ## 二、APP展示
 > - **1.主页面+抽屉导航：**
 
-![image](https://github.com/Xxxseventea/ZhiHu-Daily/blob/master/images/%E4%B8%BB%E9%A1%B5%E9%9D%A2.gif)
-
 > - **2.内容细节+点赞view：**
 
-![image]()
+> - **3.查看评论：**
+
+
+## 三、知识点：
+> - **布局：**
+1.DrawerLayout初次使用
+2.banner初次使用（借鉴了一下网络）
+3.webview初次使用
+4.NavigationBar初次使用
+5.recyclview+cardview巩固
+6.viewpager+tablayout+fragment巩固
+> - **网络请求：**
+1.okhttpclient初次使用
+2.httpurlconne+json数据
+> - **其他：**
+1.封装了时间工具类
+2.用了Glide加载图片
+3.de.hdodenhof圆形图片
+4.recyclviewadapter+viewpageradapter巩固
+5.点赞动画功能（借鉴网络）
