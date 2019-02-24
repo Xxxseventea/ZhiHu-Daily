@@ -23,7 +23,7 @@
 ## 三、知识点：
 - **布局：**
 
- >>> 1.DrawerLayout初次使用
+ 1.DrawerLayout初次使用
 
  2.banner初次使用（借鉴了一下网络）
 
@@ -33,7 +33,7 @@
 
  5.recyclview+cardview巩固
 
- 6.viewpager+tablayout+fragment巩固
+ >6.viewpager+tablayout+fragment巩固
  - **网络请求：**
 
  1.okhttpclient初次使用
