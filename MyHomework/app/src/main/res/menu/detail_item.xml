@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/share"
+        android:title="share"
+        android:icon="@mipmap/share"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/collect"
+        android:title="collect"
+        android:icon="@mipmap/collect"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/discuss"
+        android:title="discuss"
+        android:icon="@mipmap/discuss"
+        app:showAsAction="always"/>
+    <!--<item-->
+        <!--android:id="@+id/like"-->
+        <!--android:title="like"-->
+        <!--android:icon="@mipmap/like"-->
+        <!--app:showAsAction="always"/>-->
+
+</menu>
