@@ -22,6 +22,8 @@
 
 > - **2.内容细节+点赞view：**
 
+![](https://github.com/Xxxseventea/ZhiHu-Daily/blob/master/images/%E8%AF%A6%E7%BB%86%E5%86%85%E5%AE%B9.gif)
+
 > - **3.查看评论：**
 
 
