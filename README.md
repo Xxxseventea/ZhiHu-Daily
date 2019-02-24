@@ -7,6 +7,9 @@
 - **3.不足：** 因为开头的时候真的花了+浪费了很多时间，所以还有很多功能没实现，比如登陆注册换头像那一块，我感觉我的app就是相当于一张报纸，只能看点资讯啥的。。。（QAQ），还想完善也来不及了，所以俗话说的好：“一寸光阴一寸金,寸金难买寸光阴 。”
 
 
+# 希望学长学姐们多给建议以便改不足，能不能留下来已经没那么重要，最重要的是学到了真正的知识
+
+
 
 
 ## 二、APP展示
@@ -20,30 +23,33 @@
 ## 三、知识点：
 > - **布局：**
 
-1.DrawerLayout初次使用
+> 1.DrawerLayout初次使用
 
-2.banner初次使用（借鉴了一下网络）
+> 2.banner初次使用（借鉴了一下网络）
 
-3.webview初次使用
+> 3.webview初次使用
 
-4.NavigationBar初次使用
+> 4.NavigationBar初次使用
 
-5.recyclview+cardview巩固
+> 5.recyclview+cardview巩固
 
-6.viewpager+tablayout+fragment巩固
+> 6.viewpager+tablayout+fragment巩固
 > - **网络请求：**
 
-1.okhttpclient初次使用
+> 1.okhttpclient初次使用
 
-2.httpurlconne+json数据
+> 2.httpurlconne+json数据
 > - **其他：**
 
-1.封装了时间工具类
+> 1.封装了时间工具类
 
-2.用了Glide加载图片
+> 2.用了Glide加载图片
 
-3.de.hdodenhof圆形图片
+> 3.de.hdodenhof圆形图片
 
-4.recyclviewadapter+viewpageradapter巩固
+> 4.recyclviewadapter+viewpageradapter巩固
 
-5.点赞动画功能（借鉴网络）
+> 5.点赞动画功能（借鉴网络）
+
+
+（Markdown语法算不算2333）
