@@ -49,7 +49,7 @@
 
  1.okhttpclient初次使用
 
- 2.httpurlconne+json数据
+ 2.httpurlconnect+json数据
  - **其他：**
 
  1.封装了时间工具类
@@ -66,3 +66,6 @@
 
 
 （Markdown语法算不算2333）
+
+
+**apk  → ![](https://github.com/Xxxseventea/ZhiHu-Daily/blob/master/com.example.asus.myhomework%20(1).apk)**
