@@ -68,4 +68,3 @@
 （Markdown语法算不算2333）
 
 
-**apk  → ![](https://github.com/Xxxseventea/ZhiHu-Daily/blob/master/com.example.asus.myhomework%20(1).apk)**
