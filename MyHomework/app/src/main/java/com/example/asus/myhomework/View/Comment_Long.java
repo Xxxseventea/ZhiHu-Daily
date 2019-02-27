@@ -1,4 +1,4 @@
-package com.example.asus.myhomework.View;
+package com.example.asus.myhomework.view;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -10,8 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.asus.myhomework.Adapter.Comment_RecyclerViewAdapter;
-import com.example.asus.myhomework.Bean.Comment_Bean;
+import com.example.asus.myhomework.adapter.Comment_RecyclerViewAdapter;
+import com.example.asus.myhomework.bean.Comment;
 import com.example.asus.myhomework.R;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
@@ -22,10 +22,10 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import static com.example.asus.myhomework.View.MainActivity.realid;
+import static com.example.asus.myhomework.view.MainActivity.REALID;
 
 public class Comment_Long extends Fragment {
-    private ArrayList<Comment_Bean> arrayList;
+    private ArrayList<Comment> arrayList;
     private Comment_RecyclerViewAdapter comment_recyclerViewAdapter;
     @Nullable
     @Override
@@ -57,7 +57,7 @@ public class Comment_Long extends Fragment {
                 //BufferedReader reader = null;
                 try {
                     OkHttpClient okHttpClient = new OkHttpClient();
-                    Request request = new Request.Builder().url("https://news-at.zhihu.com/api/4/story/" + realid + "/long-comments").build();
+                    Request request = new Request.Builder().url("https://news-at.zhihu.com/api/4/story/" + REALID + "/long-comments").build();
                     Response response1 = okHttpClient.newCall(request).execute();
                     String response = response1.body().string();
 
@@ -70,15 +70,15 @@ public class Comment_Long extends Fragment {
                         JSONArray commentArray = new JSONArray(comments);
                         for (int i = 0; i < commentArray.length(); i++) {
                             JSONObject jsonObject1 = commentArray.getJSONObject(i);
-                            Comment_Bean comment_bean = new Comment_Bean();
-                            comment_bean.setAuthor(jsonObject1.getString("author"));
-                            comment_bean.setAvatar(jsonObject1.getString("avatar"));
-                            comment_bean.setContent(jsonObject1.getString("content"));
-                            // comment_bean.setId(jsonObject1.getInt("id"));
-                            //comment_bean.setTime(jsonObject1.getInt("time"));
-                            comment_bean.setTime(jsonObject1.getString("time"));
-                            comment_bean.setLikes(jsonObject1.getString("likes"));
-                            arrayList.add(comment_bean);
+                            Comment comment_ = new Comment();
+                            comment_.setAuthor(jsonObject1.getString("author"));
+                            comment_.setAvatar(jsonObject1.getString("avatar"));
+                            comment_.setContent(jsonObject1.getString("content"));
+                            // comment_.setId(jsonObject1.getInt("id"));
+                            //comment_.setTime(jsonObject1.getInt("time"));
+                            comment_.setTime(jsonObject1.getString("time"));
+                            comment_.setLikes(jsonObject1.getString("likes"));
+                            arrayList.add(comment_);
                         }
                         comment_recyclerViewAdapter.notifyDataSetChanged();
                     } catch (Exception e) {

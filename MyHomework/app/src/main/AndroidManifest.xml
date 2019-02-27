@@ -3,6 +3,9 @@
     package="com.example.asus.myhomework">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
 
     <application
         android:allowBackup="true"
@@ -11,15 +14,15 @@
         android:roundIcon="@mipmap/main"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".View.MainActivity">
+        <activity android:name=".view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".View.Log_in" />
-        <activity android:name=".View.Details">
+        <activity android:name=".view.Log_in" />
+        <activity android:name=".view.Details">
 
             <!-- <intent-filter> -->
             <!-- <action android:name="android.intent.action.MAIN" /> -->
@@ -28,7 +31,7 @@
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
         </activity>
-        <activity android:name=".View.Comment_Short">
+        <activity android:name=".view.Comment_Short">
 
             <!-- <intent-filter> -->
             <!-- <action android:name="android.intent.action.MAIN" /> -->
@@ -38,8 +41,8 @@
             <!-- </intent-filter> -->
         </activity>
         <activity android:name=".test" />
-        <activity android:name=".View.Comment_Long" />
-        <activity android:name=".View.comment_main"></activity>
+        <activity android:name=".view.Comment_Long" />
+        <activity android:name=".view.Comment_main" />
     </application>
 
 </manifest>

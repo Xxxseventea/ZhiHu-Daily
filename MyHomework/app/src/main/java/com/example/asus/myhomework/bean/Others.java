@@ -1,6 +1,6 @@
-package com.example.asus.myhomework.Bean;
+package com.example.asus.myhomework.bean;
 
-public class Other_Bean {
+public class Others {
     private String short_comment;
     private String long_comment;
 

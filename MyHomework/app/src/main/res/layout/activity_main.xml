@@ -6,7 +6,7 @@
     android:id="@+id/drawerlayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.MainActivity"
+    tools:context=".view.MainActivity"
     android:background="#F0F0F0">
 
 
@@ -30,8 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        app:menu="@menu/nav_menu_before"
-        app:headerLayout="@layout/nav_header_before">
+        app:menu="@menu/nav_menu_before">
 
     </android.support.design.widget.NavigationView>
 

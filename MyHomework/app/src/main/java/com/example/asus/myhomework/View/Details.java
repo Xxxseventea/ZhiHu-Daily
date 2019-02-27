@@ -1,4 +1,4 @@
-package com.example.asus.myhomework.View;
+package com.example.asus.myhomework.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,22 +9,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Toast;
 
-import com.example.asus.myhomework.Bean.Comment_Bean;
 import com.example.asus.myhomework.R;
 import com.sackcentury.shinebuttonlib.ShineButton;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Response;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-
-import static com.example.asus.myhomework.View.MainActivity.realid;
+import static com.example.asus.myhomework.view.MainActivity.REALID;
 
 
 public class Details extends AppCompatActivity {
@@ -53,7 +42,7 @@ public class Details extends AppCompatActivity {
         webView.getSettings().setJavaScriptEnabled(true);//支持javascript脚本
         webView.setWebViewClient(new WebViewClient());//从一个页面跳到另一个页面时，仍在当前页面显示
         Intent intent = getIntent();
-        webView.loadUrl("http://daily.zhihu.com/story/"+realid);
+        webView.loadUrl("http://daily.zhihu.com/story/"+REALID);
     }
 
     public boolean onCreateOptionsMenu(Menu menu){
@@ -64,7 +53,7 @@ public class Details extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()){
             case R.id.discuss:
-                Intent intent = new Intent(Details.this,comment_main.class);
+                Intent intent = new Intent(Details.this,Comment_main.class);
                 startActivity(intent);
                 break;
         }

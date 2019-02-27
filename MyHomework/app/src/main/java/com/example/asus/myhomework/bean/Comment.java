@@ -1,4 +1,4 @@
-package com.example.asus.myhomework.Bean;
+package com.example.asus.myhomework.bean;
 
 //author	"andy小陆"
 //content	"《小仙有毒》里，温家的入室弟子考题有一年是“硕鼠”。温家大伯温吞海当年应试的毒方是采尽天下至甜至香之物，密炼熬成一碗甜羹，无毒且馥郁甘甜。但人一旦饮下此羹，尝到了那绝世甜香，之后哪怕是喝蜂蜜也会觉得腥臭苦涩无比，止不住的呕吐，从此世上可食之物就只剩一个味道：苦，最终竟把人活活饿死！正应了考题“硕鼠”。。"
@@ -7,7 +7,7 @@ package com.example.asus.myhomework.Bean;
 //id	27279755
 //likes	9
 
-public class Comment_Bean {
+public class Comment {
     private String author;
     private String content;
     private String avatar;

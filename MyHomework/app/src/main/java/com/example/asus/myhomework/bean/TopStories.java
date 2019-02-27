@@ -1,6 +1,6 @@
-package com.example.asus.myhomework.Bean;
+package com.example.asus.myhomework.bean;
 
-public class Top_stories_Bean {
+public class TopStories {
         private String image;
         private int type;
         private int id;

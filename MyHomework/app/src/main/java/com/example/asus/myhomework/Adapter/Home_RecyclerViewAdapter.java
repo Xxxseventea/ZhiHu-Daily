@@ -1,13 +1,11 @@
-package com.example.asus.myhomework.Adapter;
+package com.example.asus.myhomework.adapter;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,13 +14,13 @@ import com.example.asus.myhomework.R;
 
 import java.util.ArrayList;
 
-import com.example.asus.myhomework.Bean.Stories_Bean;
+import com.example.asus.myhomework.bean.Stories;
 
 public class Home_RecyclerViewAdapter extends RecyclerView.Adapter<Home_RecyclerViewAdapter.ViewHolder> implements View.OnClickListener {
     private Context context;
-    private ArrayList<Stories_Bean> data;
+    private ArrayList<Stories> data;
 
-    public Home_RecyclerViewAdapter(ArrayList<Stories_Bean> data, Context context) {
+    public Home_RecyclerViewAdapter(ArrayList<Stories> data, Context context) {
         this.data = data;
         this.context = context;
     }

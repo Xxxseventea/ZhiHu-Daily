@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.Log_in"
+    tools:context=".view.Log_in"
     android:background="@drawable/log_background">
     <android.support.v7.widget.Toolbar
         android:id="@+id/log_toolbar"

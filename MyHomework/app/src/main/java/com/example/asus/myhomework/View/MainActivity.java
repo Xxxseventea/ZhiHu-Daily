@@ -1,12 +1,20 @@
-package com.example.asus.myhomework.View;
+package com.example.asus.myhomework.view;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -18,35 +26,37 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.PopupWindow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.example.asus.myhomework.Adapter.Home_RecyclerViewAdapter;
+import com.example.asus.myhomework.adapter.Home_RecyclerViewAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 
-import com.example.asus.myhomework.Bean.Top_stories_Bean;
-import com.example.asus.myhomework.Bean.Stories_Bean;
+import com.example.asus.myhomework.bean.TopStories;
+import com.example.asus.myhomework.bean.Stories;
 import com.example.asus.myhomework.R;
-import com.example.asus.myhomework.Tool.TimeUtil;
-import com.google.gson.JsonArray;
+import com.example.asus.myhomework.tool.TimeUtil;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
 import cn.bingoogolapple.bgabanner.BGABanner;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -55,11 +65,14 @@ public class MainActivity extends AppCompatActivity {
     private Button button;
     private RecyclerView home_recyclerview;
     private Home_RecyclerViewAdapter home_recyclerViewAdapter;
-    private ArrayList<Stories_Bean> data;
-    private int date;
+    private ArrayList<Stories> data;
     private SwipeRefreshLayout swipeRefreshLayout;
     public static ArrayList<Integer> ids = new ArrayList<>();
-    public static int realid;
+    public static int REALID;
+    private NavigationView navigationView;
+    private static String path = "/sdcard/myHead/";//从sd中找图片
+    private Bitmap headSet;
+    private CircleImageView head;
 
 
     @Override
@@ -70,8 +83,8 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         drawerLayout = findViewById(R.id.drawerlayout);
         ActionBar actionBar = getSupportActionBar();
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        button = findViewById(R.id.log_in);
+        navigationView = findViewById(R.id.nav_view);
+        //button = findViewById(R.id.log_in);
         swipeRefreshLayout = findViewById(R.id.swipe_refresh);
         swipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -80,9 +93,9 @@ public class MainActivity extends AppCompatActivity {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        try{
+                        try {
                             Thread.sleep(2000);
-                        }catch (InterruptedException e){
+                        } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
                         runOnUiThread(new Runnable() {
@@ -95,10 +108,9 @@ public class MainActivity extends AppCompatActivity {
                 }).start();
             }
         });
-       // inithome_item();
-       initData();
+        initData();
         initView();
-        if(actionBar != null){                              //设置菜单
+        if (actionBar != null) {                              //设置菜单
             actionBar.setDisplayHomeAsUpEnabled(true);   //让导航按钮显示出来
             actionBar.setHomeAsUpIndicator(R.mipmap.meun);   //设置导航按钮的图标
         }
@@ -110,7 +122,54 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+        View headview = navigationView.inflateHeaderView(R.layout.nav_header_before);
+        head = headview.findViewById(R.id.de_head);
+        head.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+              //  Toast.makeText(MainActivity.this,"23333",Toast.LENGTH_SHORT).show();
+                showTypeDialog();
+
+
+            }
+        });
     }
+
+
+
+    private void showTypeDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        final AlertDialog dialog = builder.create();
+        View view = View.inflate(this, R.layout.dialog_select, null);
+        TextView tv_select_gallery = (TextView) view.findViewById(R.id.tv_select_gallery);
+        TextView tv_select_camera = (TextView) view.findViewById(R.id.tv_select_camera);
+        tv_select_gallery.setOnClickListener(new View.OnClickListener() {// 在相册中选取
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(Intent.ACTION_PICK, null);
+                intent1.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
+                startActivityForResult(intent1, 1);
+                dialog.dismiss();
+            }
+        });
+        tv_select_camera.setOnClickListener(new View.OnClickListener() {// 调用照相机
+            @Override
+            public void onClick(View v) {
+                Intent intent2 = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                intent2.putExtra(MediaStore.EXTRA_OUTPUT,
+                        Uri.fromFile(new File(Environment.getExternalStorageDirectory(), "head.jpg")));
+                startActivityForResult(intent2, 2);// 采用ForResult打开
+                dialog.dismiss();
+            }
+        });
+        dialog.setView(view);
+        dialog.show();
+
+    }
+
+
+
 
 
     private void setHeader(RecyclerView home_recyclerview, ArrayList<String> image,ArrayList<String> title) {
@@ -168,25 +227,25 @@ public class MainActivity extends AppCompatActivity {
                         JSONArray StoriesArray = new JSONArray(stories);
                         for (int i = 0; i < StoriesArray.length(); i++) {
                             JSONObject jsonObjectData = StoriesArray.getJSONObject(i);
-                            Stories_Bean stories_bean2 = new Stories_Bean();
-                            stories_bean2.setType(jsonObjectData.getInt("type"));
-                            stories_bean2.setId(jsonObjectData.getInt("id"));
-                            stories_bean2.setGa_prefix(jsonObjectData.getString("ga_prefix"));
-                            stories_bean2.setTitle(jsonObjectData.getString("title"));
+                            Stories stories_2 = new Stories();
+                            stories_2.setType(jsonObjectData.getInt("type"));
+                            stories_2.setId(jsonObjectData.getInt("id"));
+                            stories_2.setGa_prefix(jsonObjectData.getString("ga_prefix"));
+                            stories_2.setTitle(jsonObjectData.getString("title"));
                             JSONArray imageArray = jsonObjectData.getJSONArray("images");
-                            stories_bean2.setImages(imageArray.getString(0));
-                            data.add(stories_bean2);
+                            stories_2.setImages(imageArray.getString(0));
+                            data.add(stories_2);
                            ids.add(jsonObjectData.getInt("id"));
                         }
 
 
                         JSONArray Top_stories = new JSONArray(top_stories);
-                        ArrayList<Top_stories_Bean> bannArrayList = new ArrayList<>();
+                        ArrayList<TopStories> bannArrayList = new ArrayList<>();
                         ArrayList<String> title = new ArrayList<>();
                         ArrayList<String> image = new ArrayList<>();
                         for (int i = 0; i <Top_stories.length(); i++) {
                             JSONObject jsonObjectData = Top_stories.getJSONObject(i);
-                            Top_stories_Bean top_stories_bean = new Top_stories_Bean();
+                            TopStories top_stories_bean = new TopStories();
                             top_stories_bean.setId(jsonObjectData.getInt("id"));
                             top_stories_bean.setTitle(jsonObjectData.getString("title"));
                             top_stories_bean.setImage(jsonObjectData.getString("image"));
@@ -208,11 +267,11 @@ public class MainActivity extends AppCompatActivity {
                     JSONArray jsonArray = new JSONArray(jsonObject1.getString("stories"));
                     for(int i = 0;i<jsonArray.length();i++){
                         JSONObject beforestories = jsonArray.getJSONObject(i);
-                        Stories_Bean stories_bean = new Stories_Bean();
-                        stories_bean.setTitle(beforestories.getString("title"));
+                        Stories stories_ = new Stories();
+                        stories_.setTitle(beforestories.getString("title"));
                         JSONArray imageArray = beforestories.getJSONArray("images");
-                        stories_bean.setImages(imageArray.getString(0));
-                        data.add(stories_bean);
+                        stories_.setImages(imageArray.getString(0));
+                        data.add(stories_);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -243,7 +302,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(View view, int position) {
 //                Intent intent = new Intent(MainActivity.this,Details.class);
 ////                startActivity(intent);
-                realid = ids.get(position);
+                REALID = ids.get(position);
                 Intent intent = new Intent(MainActivity.this,Details.class);
                // intent.putExtra("id",stories_bean2.getId());
                 startActivity(intent);
@@ -278,7 +337,85 @@ public class MainActivity extends AppCompatActivity {
         }
         return true;
     }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+            case 1:
+                if (resultCode == RESULT_OK) {
+                    cropPhoto(data.getData());// 裁剪图片
+                }
 
+                break;
+            case 2:
+                if (resultCode == RESULT_OK) {
+                    File temp = new File(Environment.getExternalStorageDirectory() + "/head.jpg");
+                    cropPhoto(Uri.fromFile(temp));// 裁剪图片
+                }
+
+                break;
+            case 3:
+                if (data != null) {
+                    Bundle extras = data.getExtras();
+                    head = extras.getParcelable("data");
+                    if (head != null) {
+                        /**
+                         * 上传服务器代码
+                         */
+                        setPicToView(headSet);// 保存在SD卡中
+                        head.setImageBitmap(headSet);// 用ImageView显示出来
+                    }
+                }
+                break;
+            default:
+                break;
+
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    /**
+     * 调用系统的裁剪功能
+     *
+     * @param uri
+     */
+    public void cropPhoto(Uri uri) {
+        Intent intent = new Intent("com.android.camera.action.CROP");
+        intent.setDataAndType(uri, "image/*");
+        intent.putExtra("crop", "true");
+        // aspectX aspectY 是宽高的比例
+        intent.putExtra("aspectX", 1);
+        intent.putExtra("aspectY", 1);
+        // outputX outputY 是裁剪图片宽高
+        intent.putExtra("outputX", 150);
+        intent.putExtra("outputY", 150);
+        intent.putExtra("return-data", true);
+        startActivityForResult(intent, 3);
+    }
+
+    private void setPicToView(Bitmap mBitmap) {
+        String sdStatus = Environment.getExternalStorageState();
+        if (!sdStatus.equals(Environment.MEDIA_MOUNTED)) { // 检测sd是否可用
+            return;
+        }
+        FileOutputStream b = null;
+        File file = new File(path);
+        file.mkdirs();// 创建文件夹
+        String fileName = path + "head.jpg";// 图片名字
+        try {
+            b = new FileOutputStream(fileName);
+            mBitmap.compress(Bitmap.CompressFormat.JPEG, 100, b);// 把数据写入文件
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                // 关闭流
+                b.flush();
+                b.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
 
 

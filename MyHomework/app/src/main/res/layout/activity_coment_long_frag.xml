@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.Comment_Long">
+    tools:context=".view.Comment_Long">
     <android.support.v7.widget.RecyclerView
         android:id="@+id/comment_recyclerview_long"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="?actionBarSize">
+        android:layout_marginTop="120dp">
 
     </android.support.v7.widget.RecyclerView>
 

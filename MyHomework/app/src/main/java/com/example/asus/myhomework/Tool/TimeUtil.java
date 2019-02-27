@@ -1,14 +1,9 @@
-package com.example.asus.myhomework.Tool;
+package com.example.asus.myhomework.tool;
 
-import java.net.PortUnreachableException;
-import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.Locale;
 
 
 public class TimeUtil {

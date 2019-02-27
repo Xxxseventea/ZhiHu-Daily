@@ -1,4 +1,4 @@
-package com.example.asus.myhomework.Adapter;
+package com.example.asus.myhomework.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -10,16 +10,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.example.asus.myhomework.Bean.Comment_Bean;
+import com.example.asus.myhomework.bean.Comment;
 import com.example.asus.myhomework.R;
-import com.example.asus.myhomework.Tool.TimeUtil;
+import com.example.asus.myhomework.tool.TimeUtil;
 
 import java.util.ArrayList;
 
 public class Comment_RecyclerViewAdapter extends RecyclerView.Adapter<Comment_RecyclerViewAdapter.ViewHoler> {
     private Context context;
-    private ArrayList<Comment_Bean> commentdata;
-    public Comment_RecyclerViewAdapter(ArrayList<Comment_Bean> commentdata,Context context){
+    private ArrayList<Comment> commentdata;
+    public Comment_RecyclerViewAdapter(ArrayList<Comment> commentdata, Context context){
         this.commentdata = commentdata;
         this.context = context;
     }

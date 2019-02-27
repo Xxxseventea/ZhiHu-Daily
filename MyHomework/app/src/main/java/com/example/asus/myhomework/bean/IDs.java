@@ -1,6 +1,6 @@
-package com.example.asus.myhomework.Bean;
+package com.example.asus.myhomework.bean;
 
-public class IDs_Bean {
+public class IDs {
     private int ids;
 
     public int getIds() {
