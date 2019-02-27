@@ -1,6 +1,5 @@
 package com.example.asus.myhomework.tool;
 
-import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 
 import java.util.Calendar;
