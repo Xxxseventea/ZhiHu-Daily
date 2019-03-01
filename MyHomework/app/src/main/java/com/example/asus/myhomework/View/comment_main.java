@@ -7,9 +7,12 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.PopupWindow;
+import android.widget.Toast;
 
 import com.example.asus.myhomework.adapter.MyViewPagerAdapter;
 import com.example.asus.myhomework.R;
@@ -17,7 +20,7 @@ import com.example.asus.myhomework.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Comment_main extends AppCompatActivity implements View.OnClickListener{
+public class Comment_main extends AppCompatActivity{
     private TabLayout tabLayout;
     private List<String> titles;
     private ViewPager viewPager;
@@ -40,6 +43,7 @@ public class Comment_main extends AppCompatActivity implements View.OnClickListe
         if (actionBar != null) {                              //设置菜单
             actionBar.setDisplayHomeAsUpEnabled(true);   //让导航按钮显示出来
             actionBar.setHomeAsUpIndicator(R.mipmap.back);   //设置导航按钮的图标
+            actionBar.setHomeButtonEnabled(true);
         }
 
 
@@ -74,8 +78,6 @@ public class Comment_main extends AppCompatActivity implements View.OnClickListe
 
                 }
             });
-            button = findViewById(R.id.btn_write);
-            button.setOnClickListener(this);
 
 //    private void showPopupWindow() {
 //        View contentView = LayoutInflater.from(Comment_main.this).inflate(R.layout.popuwindow,null);
@@ -93,11 +95,12 @@ public class Comment_main extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    @Override
-    public void onClick(View v) {
-        if(v.getId() == R.id.btn_write){
-            Intent intent = new Intent(Comment_main.this,PopupWindow.class);
-            startActivity(intent);
-        }
-    }
+//     public boolean onOptionsItemSelected(MenuItem menuItem){
+//        switch (menuItem.getItemId()){
+//            case android.R.id.home:
+//                this.finish();
+//                return true;
+//        }
+//        return super.onOptionsItemSelected(menuItem);
+//     }
 }

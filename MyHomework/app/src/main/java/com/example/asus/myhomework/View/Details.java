@@ -29,8 +29,10 @@ public class Details extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         if(actionBar != null){                              //设置菜单
             actionBar.setDisplayHomeAsUpEnabled(true);   //让导航按钮显示出来
-            actionBar.setHomeAsUpIndicator(R.mipmap.back);   //设置导航按钮的图标
+            actionBar.setHomeAsUpIndicator(R.mipmap.back);//设置导航按钮的图标
+            actionBar.setHomeButtonEnabled(true);
         }
+
         ShineButton shineButton = findViewById(R.id.btn_like);
         shineButton.init(this);
        initView();
@@ -56,6 +58,9 @@ public class Details extends AppCompatActivity {
                 Intent intent = new Intent(Details.this,Comment_main.class);
                 startActivity(intent);
                 break;
+                case android.R.id.home:
+                    this.finish();
+                    break;
         }
         return true;
     }
